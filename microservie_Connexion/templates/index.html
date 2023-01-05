@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}Bienvenue sur notre application de gestion de notes{% endblock %}</h1><br><br><br><br>
+	<div>
+            <h2>Formulaire de connexion</h2>
+            <form method="POST" action="/login">
+                <table>
+                    <tr>
+                        <td><b>Nom d'utilisateur :</b></td>
+                        <td><input type = "text" name="nom" id = "user_id"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Mot de passe:</b></td>
+                        <td><input type = "password" name="password" id= "mdp"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td ><input type="submit" value = "Connexion" id = "envoie"></td>
+						 <td ><input type="reset" value = "Effacer" ></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+	
+	
+{% endblock %}
+   
