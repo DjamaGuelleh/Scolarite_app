@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}Bienvenue sur notre application de gestion de notes{% endblock %}</h1><br><br><br><br>
+	<div>
+            <h2>Formulaire d'insertion des notes </h2>
+            <form method="POST" action="/login">
+                <table>
+                    <tr>
+                        <td><b>Matiere :</b></td>
+                        <td><select name="les Matieres" id="id_matiere">
+                            <option value="1">Devops</option>
+                            <option value="2">ML</option>
+                            <option value="3">Crypto</option>
+                            <option value="4">Cloud</option>
+                            
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Filiere:</b></td>
+                        <td><select name="les Filieres" id="id_filiere">
+                            <option value="1">Data science</option>
+                            <option value="2">cyber security</option>
+                            
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td><b>CNE:</b></td>
+                            <td><input type = "text" name="cne" id= "cne"></td>
+                        </tr>
+                    <tr>
+                        <td><b>Note :</b></td>
+                        <td><input type = "text" name="note" id= "note"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td ><input type="submit" value = "Insertion" id = "envoie"></td>
+						 <td ><input type="reset" value = "Effacer" ></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+	
+	
+{% endblock %}
+   
