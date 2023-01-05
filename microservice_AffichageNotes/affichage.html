@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}Voici les données contenues dans la base{% endblock %}</h1><br><br><br><br>
+		<div>
+		<table border=1>
+		<tr>
+					 <td>Matiere}</td>
+					 <td>Notes</td>
+				  </tr>
+		
+			{% for row in results %}
+				  <tr>
+					 <td>{{ row[0] }}</td>
+					 <td>{{ row[1] }}</td>
+				  </tr>
+			{% endfor %}
+			</table>
+			</div>
+
+{% endblock %}
