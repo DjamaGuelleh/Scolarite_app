@@ -1,4 +1,4 @@
-
+CREATE DATABASE projet_devops;
 use projet_devops;
 
 CREATE TABLE filiere (
@@ -43,3 +43,8 @@ CREATE TABLE `note` (
   FOREIGN KEY (cne) REFERENCES users(id),
   FOREIGN KEY (id_filiere) REFERENCES filiere(id_filiere)
 );
+
+insert  into `filiere`(`id_filiere`,`intitule`) values (1,' Data Sciences');
+insert  into `matiere`(`id_matiere`,`id_filiere`,`nom`) values (1,1, "Cloud");
+insert  into `users`(`id`,`mdp`) values (1,'1');
+insert  into `note`(`id_matiere`,`id_filiere`,`cne`,`note`) values (1,1,1,10.0);

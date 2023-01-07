@@ -1,5 +1,5 @@
 import os
-from flask import jsonify, request, Flask, render_template
+from flask import jsonify, request, Flask, render_template,redirect, url_for
 from flaskext.mysql import MySQL
 
 app = Flask(__name__)
@@ -10,13 +10,16 @@ mysql = MySQL()
 app.config["MYSQL_DATABASE_USER"] = "root"
 app.config["MYSQL_DATABASE_PASSWORD"] = "oooo"
 app.config["MYSQL_DATABASE_DB"] = "projet_devops"
-app.config["MYSQL_DATABASE_HOST"] = "127.0.0.1"
+app.config["MYSQL_DATABASE_HOST"] = "mysql"
 mysql.init_app(app)
 
 
-@app.route("/")
-
+@app.route("/", method = ['GET'])
 def index():
+    return redirect(url_for('insertion'))
+
+@app.route("/insertion")
+def insertion():
     return render_template('InsertionForm.html')
 
 
