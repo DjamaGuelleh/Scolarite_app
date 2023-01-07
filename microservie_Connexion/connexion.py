@@ -1,6 +1,7 @@
 import os
 from flask import jsonify, request, Flask, render_template, redirect, url_for
 from flaskext.mysql import MySQL
+import socket
 
 app = Flask(__name__)
 
@@ -31,8 +32,8 @@ def connexion():
         conn = mysql.connect()
         cursor = conn.cursor()
         sql = "SELECT * FROM users where id= %s and mdp = %s"
-        cursor.execute(sql, [user_id,password])
-        return redirect(url_for('notes'))
+        cursor.execute(sql, [user_id,password])        
+        return redirect(url_for("http://notes:5001"))
     except Exception as exception:
         return jsonify(str(exception))
     

@@ -1,4 +1,3 @@
-
 import os
 from flask import jsonify, request, Flask, render_template, redirect, url_for
 from flaskext.mysql import MySQL
@@ -14,7 +13,7 @@ app.config["MYSQL_DATABASE_DB"] = "projet_devops"
 app.config["MYSQL_DATABASE_HOST"] = "mysql"
 mysql.init_app(app)
 
-@app.route("/", method = ['GET'])
+@app.route("/")
 def index():
     return redirect(url_for('notes'))
 
@@ -32,4 +31,4 @@ def notes():
         return jsonify(str(exception))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5001)

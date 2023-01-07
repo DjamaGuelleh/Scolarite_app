@@ -2,18 +2,25 @@ version: "3"
 services:
   notes:
     build : ./microservice_AffichageNotes
-    links:
-      - mysql
+    hostname: notes
     ports:
-      - "5001:5000"
+      - 5001:5001  # host:contai                             
+    networks:
+      sample :
+        aliases :
+          - notes
     restart: always
   connexion:
     build : ./microservie_Connexion
-    links:
-      - mysql
-      - notes
+    hostname: connexion
     ports:
       - "5000:5000"
+    networks:
+      sample:
+        aliases:
+          - connexion
+    links :
+      - notes
     restart: always
   mysql:
     image: mysql:8.0.21
@@ -23,6 +30,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: oooo
       MYSQL_DATABASE: projet_devops
+    restart: always
+    hostname: mysql
+    networks:
+      sample:
+        aliases:
+          - mysql
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
   
@@ -31,3 +44,5 @@ services:
       restart: always
       ports: 
         - 8080:8080
+networks:
+  sample: 
