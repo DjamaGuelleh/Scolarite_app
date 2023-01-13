@@ -1,18 +1,19 @@
 import os
 from flask import jsonify, request, Flask, render_template, redirect, url_for
 from flaskext.mysql import MySQL
-import socket
+
 
 app = Flask(__name__)
 
 mysql = MySQL()
 
 # MySQL configurations
-app.config["MYSQL_DATABASE_USER"] = "root"
-app.config["MYSQL_DATABASE_PASSWORD"] = "oooo"
+app.config["MYSQL_DATABASE_USER"] = "kaou"
+app.config["MYSQL_DATABASE_PASSWORD"] = "root"
 app.config["MYSQL_DATABASE_DB"] = "projet_devops"
 app.config["MYSQL_DATABASE_HOST"] = "mysql"
 mysql.init_app(app)
+
 
 
 @app.route("/")
@@ -32,8 +33,9 @@ def connexion():
         conn = mysql.connect()
         cursor = conn.cursor()
         sql = "SELECT * FROM users where id= %s and mdp = %s"
-        cursor.execute(sql, [user_id,password])        
-        return redirect(url_for("http://notes:5001"))
+        cursor.execute(sql, [user_id,password]) 
+        notes = os.getenv("NOTES_SERVICE_HOST")       
+        return redirect("http://localhost:5001")
     except Exception as exception:
         return jsonify(str(exception))
     
